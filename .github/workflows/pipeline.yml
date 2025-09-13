@@ -44,10 +44,10 @@ jobs:
         
   deploy-PRE:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/release'
     environment:
       name: pre
     needs: publish
-    if: github.ref == 'refs/heads/release'
     steps: 
       - name: Deploy
         shell: bash
@@ -55,10 +55,10 @@ jobs:
 
   deploy-PRD:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     environment:
       name: prd
     needs: publish
-    if: github.ref == 'refs/heads/main'
     steps: 
       - name: Deploy
         shell: bash
