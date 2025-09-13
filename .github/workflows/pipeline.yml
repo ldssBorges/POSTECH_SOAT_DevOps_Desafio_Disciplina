@@ -41,6 +41,17 @@ jobs:
       - name: Deploy
         shell: bash
         run: echo "Deploy STG"
+        
+  deploy-PRE:
+    runs-on: ubuntu-latest
+    environment:
+      name: pre
+    needs: publish
+    if: github.ref == 'refs/heads/release'
+    steps: 
+      - name: Deploy
+        shell: bash
+        run: echo "Deploy PRE"
 
   deploy-PRD:
     runs-on: ubuntu-latest
@@ -52,3 +63,5 @@ jobs:
       - name: Deploy
         shell: bash
         run: echo "Deploy PRD"
+
+
